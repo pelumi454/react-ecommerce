@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import FormInput from './FormInput'
 import './SignIn.scss'
 import CustomButton from './CustomButton'
+import {signInWithGoogle} from './firebase.utils'
+// import {signInWithCredential} from './firebase.utils'
+//  import {signInWithFacebook} from './firebase.utils'
 
  class SignIn extends Component {
      constructor(props) {
@@ -36,11 +39,13 @@ import CustomButton from './CustomButton'
                 <h1>I already have an account</h1>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.handleSubmit}>
-                    <FormInput name='email' type='email' value={this.state.email} handleChange = {this.handleChange} required label='email'/>
+                    <FormInput name='email' type='email' value={this.state.email} handleChange = {this.handleChange} label='email'/>
                   
-                    <FormInput name='password' type='password' value={this.state.password} handleChange = {this.handleChange} label='password' required/>
-            
-                    <CustomButton type='submit'>Sign in </CustomButton>
+                    <FormInput name='password' type='password' value={this.state.email} handleChange = {this.handleChange} label='password' />
+                <div className='buttons'>
+                <CustomButton type='submit'>Sign in </CustomButton>
+                <CustomButton onClick={signInWithGoogle} isGoogleSignIn >Sign in with Google </CustomButton>   
+                </div>
                 </form>
                 
             </div>
@@ -49,3 +54,9 @@ import CustomButton from './CustomButton'
 }
 
 export default SignIn
+
+
+                  
+        {/* { <CustomButton onClick={signInWithCredential}>Sign in with GitHub </CustomButton> } */}
+        {/* <CustomButton onClick={signInWithFacebook}>Sign in with Facebook </CustomButton> */}
+
