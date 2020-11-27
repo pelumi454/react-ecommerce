@@ -54,7 +54,7 @@ class SignUp extends Component {
         const {dispalyName,email,password,confirmPassword} = this.state
         return (
             <div className='sign-up'>
-                <h2 className='title'>I dont have an account</h2>
+                <h1 className='title'>I dont have an account</h1>
                 <span>Sign up with your email and password</span>
                 <form className='sign-up-form' onSubmit={this.handleSubmit}>
                     <FormInput name='displayName' type='text' value={dispalyName} onChange = {this.handleChange} label='displayName'/>

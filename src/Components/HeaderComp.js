@@ -1,7 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {ReactComponent as Logo} from '../Components/assets/crown.svg'
 import {auth} from './firebase.utils'
+import CartIcon from './cart-icon/cart-icon'
+import {CartDropdown} from './cart-dropdown/cart-dropdown'
 import './HeaderComp.scss'
 
 const HeaderComp = ({currentUser}) => {
@@ -24,9 +27,16 @@ const HeaderComp = ({currentUser}) => {
                 :
                 (<Link className='option' to='./signin'>SIGN IN</Link>)
             }
+            {/* <Cart currentUser={currentUser}/>  */}
+            <CartIcon/>
         </div>
+        <CartDropdown/>
         </div>
     )
-}  
+} 
 
-export default HeaderComp
+const mapStateToPrps = state => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToPrps)(HeaderComp)
